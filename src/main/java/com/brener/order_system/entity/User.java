@@ -1,13 +1,15 @@
 package com.brener.order_system.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "tb_user")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -19,15 +21,19 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList<>();
+
     public User(){
     }
 
     public User(Long id, String name, String email, String phone, String password){
         this.id = id;
         this.name = name;
-        this. email = email;
+        this.email = email;
         this.phone = phone;
-        this. password = password;
+        this.password = password;
     }
 
     public Long getId() {
@@ -68,6 +74,10 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Order> getOrders(){
+        return orders;
     }
 
     @Override
