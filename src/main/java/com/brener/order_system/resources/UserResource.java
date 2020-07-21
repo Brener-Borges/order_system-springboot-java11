@@ -1,6 +1,6 @@
 package com.brener.order_system.resources;
 
-import com.brener.order_system.entity.User;
+import com.brener.order_system.entities.User;
 import com.brener.order_system.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

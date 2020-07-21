@@ -1,4 +1,4 @@
-package com.brener.order_system.entity;
+package com.brener.order_system.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
