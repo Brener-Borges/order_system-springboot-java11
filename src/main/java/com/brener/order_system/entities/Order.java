@@ -70,6 +70,14 @@ public class Order implements Serializable {
         }
     }
 
+    public User getClient() {
+        return client;
+    }
+
+    public void setClient(User client) {
+        this.client = client;
+    }
+
     public Payment getPayment() {
         return payment;
     }
@@ -78,12 +86,16 @@ public class Order implements Serializable {
         this.payment = payment;
     }
 
-    public User getClient() {
-        return client;
+    public Set<OrderItem> getItems(){
+        return items;
     }
 
-    public void setClient(User client) {
-        this.client = client;
+    public Double getTotal(){
+        double sum = 0.0;
+        for(OrderItem x : items){
+            sum += x.getSubTotal();
+        }
+        return sum;
     }
 
     @Override
